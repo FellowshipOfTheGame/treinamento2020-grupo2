@@ -6,14 +6,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] float Xspeed = 5f;
-    [SerializeField] float Yspeed = 3f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] float Yspeed = 4f;
 
-    // Update is called once per frame
     void Update()
     {
         Movement();
