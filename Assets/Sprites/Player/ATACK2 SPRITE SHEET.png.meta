@@ -1,0 +1,368 @@
+fileFormatVersion: 2
+guid: 68ee229ea6e65914eb769c1d803e7f42
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4380755831499165010
+    second: ATACK2 SPRITE SHEET_0
+  - first:
+      213: -3784052626071461668
+    second: ATACK2 SPRITE SHEET_1
+  - first:
+      213: 1165809201897386759
+    second: ATACK2 SPRITE SHEET_2
+  - first:
+      213: 8806883915754184359
+    second: ATACK2 SPRITE SHEET_3
+  - first:
+      213: -7179605556626823415
+    second: ATACK2 SPRITE SHEET_4
+  - first:
+      213: -3666727932975314345
+    second: ATACK2 SPRITE SHEET_5
+  - first:
+      213: 4838269285805713748
+    second: ATACK2 SPRITE SHEET_6
+  - first:
+      213: -6380188722242409837
+    second: ATACK2 SPRITE SHEET_7
+  - first:
+      213: -3528333719867149489
+    second: ATACK2 SPRITE SHEET_0
+  - first:
+      213: 7297907636259918338
+    second: ATACK2 SPRITE SHEET_1
+  - first:
+      213: -3036665262074866403
+    second: ATACK2 SPRITE SHEET_2
+  - first:
+      213: 6163702419560254036
+    second: ATACK2 SPRITE SHEET_3
+  - first:
+      213: 8650425294070601134
+    second: ATACK2 SPRITE SHEET_4
+  - first:
+      213: -7360030585053950985
+    second: ATACK2 SPRITE SHEET_5
+  - first:
+      213: 5068519979722373515
+    second: ATACK2 SPRITE SHEET_6
+  - first:
+      213: -5136807877554269829
+    second: ATACK2 SPRITE SHEET_7
+  - first:
+      213: 1011968813116560956
+    second: ATACK2 SPRITE SHEET_8
+  - first:
+      213: -186541964265323822
+    second: ATACK2 SPRITE SHEET_9
+  - first:
+      213: -8694841603520533042
+    second: ATACK2 SPRITE SHEET_10
+  - first:
+      213: -2078410625083679373
+    second: ATACK2 SPRITE SHEET_11
+  - first:
+      213: 3057575429103464752
+    second: ATACK2 SPRITE SHEET_12
+  - first:
+      213: -1386724931180686344
+    second: ATACK2 SPRITE SHEET_13
+  - first:
+      213: -3906604355246536366
+    second: ATACK2 SPRITE SHEET_14
+  - first:
+      213: -253651825873562235
+    second: ATACK2 SPRITE SHEET_15
+  - first:
+      213: -4668768793086460928
+    second: ATACK2 SPRITE SHEET_16
+  - first:
+      213: -2508928421680305733
+    second: ATACK2 SPRITE SHEET_17
+  - first:
+      213: 2893582505974862689
+    second: ATACK2 SPRITE SHEET_18
+  - first:
+      213: 9138858163572788417
+    second: ATACK2 SPRITE SHEET_19
+  - first:
+      213: -5140019123170625092
+    second: ATACK2 SPRITE SHEET_20
+  - first:
+      213: 8687045253684138512
+    second: ATACK2 SPRITE SHEET_21
+  - first:
+      213: 3036956507645017319
+    second: ATACK2 SPRITE SHEET_22
+  - first:
+      213: 1997782107733596484
+    second: ATACK2 SPRITE SHEET_23
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ATACK2 SPRITE SHEET_0
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 869
+        width: 453
+        height: 553
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f43394afc27d80fc0800000000000000
+      internalID: -3528333719867149489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ATACK2 SPRITE SHEET_1
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 859
+        width: 411
+        height: 863
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20212e64450674560800000000000000
+      internalID: 7297907636259918338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ATACK2 SPRITE SHEET_2
+      rect:
+        serializedVersion: 2
+        x: 1815
+        y: 865
+        width: 429
+        height: 845
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d15524878099bd5d0800000000000000
+      internalID: -3036665262074866403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ATACK2 SPRITE SHEET_3
+      rect:
+        serializedVersion: 2
+        x: 2425
+        y: 884
+        width: 587
+        height: 777
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45aca13a1bed98550800000000000000
+      internalID: 6163702419560254036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ATACK2 SPRITE SHEET_4
+      rect:
+        serializedVersion: 2
+        x: 3123
+        y: 895
+        width: 656
+        height: 732
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea5d12919fb7c0870800000000000000
+      internalID: 8650425294070601134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ATACK2 SPRITE SHEET_5
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 7
+        width: 427
+        height: 829
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fb49d19d2bebd990800000000000000
+      internalID: -7360030585053950985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ATACK2 SPRITE SHEET_6
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 0
+        width: 442
+        height: 605
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8972504110075640800000000000000
+      internalID: 5068519979722373515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ATACK2 SPRITE SHEET_7
+      rect:
+        serializedVersion: 2
+        x: 1730
+        y: 3
+        width: 517
+        height: 556
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7113fa837466b8b0800000000000000
+      internalID: -5136807877554269829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
