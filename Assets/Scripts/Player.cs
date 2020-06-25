@@ -9,8 +9,8 @@ using UnityEngine.EventSystems;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float jumpTime = 0.5f;
-    [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private float midAirControl = 1.5f;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float midAirControl = 0.9f;
     [SerializeField] private float jumpVelocity = 3f;
     [SerializeField] private LayerMask groundLayerMask = default;
 
@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer sprite;
     private float jumpTimeCounter;
     private bool isJumping;
+    private bool isFacingRight = true;
 
     private void Awake()
     {
@@ -33,6 +34,20 @@ public class Player : MonoBehaviour
     {
         Movement();
         Jump();
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            MeleeAttack();
+        }
+
+        if (rb2D.velocity.x > 0f && !isFacingRight)
+        {
+            Flip();
+        }
+        else if (rb2D.velocity.x < 0f && isFacingRight)
+        {
+            Flip();
+        }
     }
 
     private void Jump()
@@ -69,8 +84,6 @@ public class Player : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(rb2D.velocity.x));
         if (Input.GetKey(KeyCode.A))
         {
-            sprite.flipX = true;
-
             if (IsGrounded())
             {
                 rb2D.velocity = new Vector2(-moveSpeed, rb2D.velocity.y);
@@ -85,8 +98,6 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.D))
             {
-                sprite.flipX = false;
-
                 if (IsGrounded())
                 {
                     rb2D.velocity = new Vector2(moveSpeed, rb2D.velocity.y);
@@ -112,5 +123,17 @@ public class Player : MonoBehaviour
         Debug.Log(raycastHit2D.collider);
 
         return raycastHit2D.collider != null;
+    }
+
+    private void MeleeAttack()
+    {
+        animator.SetBool("MeleeAttack", true);
+    }
+
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+
+        transform.Rotate(0f, 180f, 0f);
     }
 }
