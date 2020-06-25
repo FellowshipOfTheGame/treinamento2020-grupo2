@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ParallaxBackground : MonoBehaviour
 {
-    [SerializeField] private Vector2 parallaxEffectMultiplier;
-    [SerializeField] private bool infiniteHorizontal;
-    [SerializeField] private bool infiniteVertical;
+    [SerializeField] private Vector2 parallaxEffectMultiplier = default;
+    [SerializeField] private bool infiniteHorizontal = false;
+    [SerializeField] private bool infiniteVertical = false;
 
     private Transform cameraTransform;
     private Vector3 lastCameraPosition;
