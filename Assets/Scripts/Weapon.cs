@@ -9,13 +9,22 @@ public class Weapon : MonoBehaviour
     [SerializeField] GameObject harpoonPrefab = null;
     [SerializeField] float shootTime = 1f;
 
+    private Animator animator;
     private bool canShoot = true;
 
-    void Update()
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
             Shoot();
+        }
+        if (Input.GetKeyUp(KeyCode.J))
+        {
+            animator.SetBool("RangedAttack", false);
         }
     }
 
@@ -23,6 +32,7 @@ public class Weapon : MonoBehaviour
     {
         if (shootTime > 0 && canShoot)
         {
+            animator.SetBool("RangedAttack", true);
             Instantiate(harpoonPrefab, firePoint.position, firePoint.rotation);
             shootTime -= Time.deltaTime;
         }

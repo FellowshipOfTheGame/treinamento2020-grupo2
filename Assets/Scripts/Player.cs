@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Timers;
 using UnityEditor;
 using UnityEngine;
@@ -8,45 +9,56 @@ using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] private float jumpTime = 0.5f;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float midAirControl = 0.9f;
     [SerializeField] private float jumpVelocity = 3f;
+
+    [Header("MeleeAttack")]
+    [SerializeField] private int meleeAttackDamage = 10;
+    [SerializeField] private float attackRange = 1f;
+    [SerializeField] private Transform meleeAttackPoint = null;
+    [SerializeField] private LayerMask enemyLayers;
+
+    [Header("Ground")]
     [SerializeField] private LayerMask groundLayerMask = default;
 
     private Animator animator;
     private BoxCollider2D boxCollider2D;
     private Rigidbody2D rb2D;
-    private SpriteRenderer sprite;
     private float jumpTimeCounter;
     private bool isJumping;
     private bool isFacingRight = true;
+    private bool canMove = true;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        Movement();
-        Jump();
+        if (canMove)
+        {
+            Movement();
+            Jump();
 
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            MeleeAttack();
-        }
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                MeleeAttack();
+            }
 
-        if (rb2D.velocity.x > 0f && !isFacingRight)
-        {
-            Flip();
-        }
-        else if (rb2D.velocity.x < 0f && isFacingRight)
-        {
-            Flip();
+            if (rb2D.velocity.x > 0f && !isFacingRight)
+            {
+                Flip();
+            }
+            else if (rb2D.velocity.x < 0f && isFacingRight)
+            {
+                Flip();
+            }
         }
     }
 
@@ -127,7 +139,16 @@ public class Player : MonoBehaviour
 
     private void MeleeAttack()
     {
-        animator.SetBool("MeleeAttack", true);
+        animator.SetTrigger("MeleeAttack");
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(meleeAttackPoint.position, attackRange, enemyLayers);
+
+        foreach(Collider2D enemy in hitEnemies)
+        {
+            Debug.Log("Melee hit in " + enemy.name);
+
+            enemy.GetComponent<Enemy>().TakeDamage(meleeAttackDamage);
+        }
     }
 
     private void Flip()
@@ -135,5 +156,20 @@ public class Player : MonoBehaviour
         isFacingRight = !isFacingRight;
 
         transform.Rotate(0f, 180f, 0f);
+    }
+
+    public void StopMoving()
+    {
+        canMove = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!meleeAttackPoint)
+        {
+            return;
+        }
+
+        Gizmos.DrawWireSphere(meleeAttackPoint.position, attackRange);
     }
 }
