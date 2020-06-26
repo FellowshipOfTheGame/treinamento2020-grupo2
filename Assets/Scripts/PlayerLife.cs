@@ -9,10 +9,14 @@ public class PlayerLife : MonoBehaviour
 {
     [SerializeField] int life = 100;
 
+    private Animator animator;
+    private Player player;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        animator = GetComponent<Animator>();
+        player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
@@ -26,6 +30,8 @@ public class PlayerLife : MonoBehaviour
 
     private void Death()
     {
+        player.StopMoving();
+        animator.SetBool("Death", true);
         Debug.LogWarning("Implementar cena de game over");
         //SceneManager.LoadScene("Game Over Scene");
     }
