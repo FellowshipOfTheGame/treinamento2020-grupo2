@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8419931752344769617}
   - component: {fileID: 742477141627205036}
   - component: {fileID: 8120690516211209956}
+  - component: {fileID: 1747896224}
   m_Layer: 0
   m_Name: Clownfish
   m_TagString: Untagged
@@ -68,12 +69,12 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 790541831
+  m_SortingLayer: -1
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 55457454258acdc4e8811f7908c2bad0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 4.91, y: 2.66}
@@ -101,3 +102,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1747896224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8188107719449529694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ec68a332d4ce4f45a4a1c927151da7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2

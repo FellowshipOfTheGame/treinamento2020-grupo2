@@ -16,7 +16,7 @@ TagManager:
   - Ground
   - Background
   - Enemies
-  - 
+  - Player
   - 
   - 
   - 
@@ -43,6 +43,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 101879511
+    locked: 0
+  - name: Fishes
+    uniqueID: 790541831
     locked: 0
   - name: Default
     uniqueID: 0

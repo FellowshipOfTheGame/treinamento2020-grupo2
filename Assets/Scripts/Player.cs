@@ -9,6 +9,8 @@ using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private Collider2D treasure;
+
     [Header("Movement")]
     [SerializeField] private float jumpTime = 0.5f;
     [SerializeField] private float moveSpeed = 5f;
@@ -17,6 +19,7 @@ public class Player : MonoBehaviour
 
     [Header("MeleeAttack")]
     [SerializeField] private int meleeAttackDamage = 10;
+    [SerializeField] private float meleeAttackRate = 2f;
     [SerializeField] private float attackRange = 1f;
     [SerializeField] private Transform meleeAttackPoint = null;
     [SerializeField] private LayerMask enemyLayers;
@@ -27,10 +30,12 @@ public class Player : MonoBehaviour
     private Animator animator;
     private BoxCollider2D boxCollider2D;
     private Rigidbody2D rb2D;
+    private float nextMeleeAttackTime = 0f;
     private float jumpTimeCounter;
     private bool isJumping;
     private bool isFacingRight = true;
     private bool canMove = true;
+    private bool canOpenTreasure = false;
 
     private void Awake()
     {
@@ -45,11 +50,13 @@ public class Player : MonoBehaviour
         {
             Movement();
             Jump();
-
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                MeleeAttack();
-            }
+            
+            if (Time.time >= nextMeleeAttackTime)
+                if (Input.GetKeyDown(KeyCode.H))
+                {
+                    MeleeAttack();
+                    nextMeleeAttackTime = Time.time + 1f / meleeAttackRate;
+                }
 
             if (rb2D.velocity.x > 0f && !isFacingRight)
             {
@@ -58,6 +65,15 @@ public class Player : MonoBehaviour
             else if (rb2D.velocity.x < 0f && isFacingRight)
             {
                 Flip();
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                canOpenTreasure = true;
+            }
+            else
+            {
+                canOpenTreasure = false;
             }
         }
     }
@@ -161,6 +177,7 @@ public class Player : MonoBehaviour
     public void StopMoving()
     {
         canMove = false;
+        rb2D.velocity = Vector3.zero;
     }
 
     private void OnDrawGizmos()
@@ -171,5 +188,16 @@ public class Player : MonoBehaviour
         }
 
         Gizmos.DrawWireSphere(meleeAttackPoint.position, attackRange);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Debug.Log("TRIGGERR!!");
+        if (collision == treasure && canOpenTreasure)
+        {
+            animator.SetBool("Open", true);
+            Debug.Log("YOU WON!!");
+            Debug.LogWarning("DAR LOAD NA CENA DE VITORIA");
+        }    
     }
 }

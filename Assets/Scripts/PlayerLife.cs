@@ -11,47 +11,52 @@ public class PlayerLife : MonoBehaviour
 
     private Animator animator;
     private Player player;
+    private HealthBar healthBar;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         player = FindObjectOfType<Player>();
+        healthBar = FindObjectOfType<HealthBar>();
+        healthBar.SetMaxHealth(life);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (life <= 0)
+        if (Input.GetKeyDown(KeyCode.T))
         {
-            Death();
+            TakeDamage(20);
         }
     }
 
     private void Death()
     {
         player.StopMoving();
-        animator.SetBool("Death", true);
+        animator.SetTrigger("Death");
         Debug.LogWarning("Implementar cena de game over");
         //SceneManager.LoadScene("Game Over Scene");
     }
 
-    public int getPlayerLife()
+    public int GetPlayerLife()
     {
         return life;
     }
 
-    public void addLife(int amount)
+    public void AddLife(int amount)
     {
         life += amount;
     }
 
-    public void removeLife(int amount)
+    public void TakeDamage(int amount)
     {
         life -= amount;
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.LogWarning("Implementar o que acontece quando colidir com os inimigos");
+        healthBar.SetHealth(life);
+
+        if (life <= 0)
+        {
+            Death();
+        }
     }
 }
