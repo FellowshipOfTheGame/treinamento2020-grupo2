@@ -8,23 +8,27 @@ public class Enemy : MonoBehaviour
 {
     [Header("Life")]
     [SerializeField] int health = 100;
+    [SerializeField] private HealthBar healthBar;
 
     [Header("Attack")]
-    [SerializeField] int damage = 30;
+    [SerializeField] private int damage = 30;
     [SerializeField] private float attackRange = 1f;
+    [SerializeField] private Vector2 pushForce = new Vector2(10f, 0f);
     [SerializeField] private Transform AttackPoint = null;
 
     [Header("Player")]
     [SerializeField] private LayerMask playerLayer;
-    [SerializeField] private Transform player;
+    [SerializeField] private GameObject player;
 
     [Header("SinMovement")]
-    [SerializeField] Vector3 movementVector = new Vector3(-20f, 0f, 0f);
+    [SerializeField] private Vector3 movementVector = new Vector3(-20f, 0f, 0f);
     [SerializeField] float period = 6f;
 
     [Header("Chase Movement")]
     [SerializeField] float speed = 5f;
 
+    private Player playerScript;
+    private PlayerLife playerLifeScript;
     private Rigidbody2D rb2D;
     private Vector2 movement;
     private bool canMove = true;
@@ -35,6 +39,8 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        playerScript = FindObjectOfType<Player>();
+        playerLifeScript = FindObjectOfType<PlayerLife>();
         rb2D = GetComponent<Rigidbody2D>();
     }
 
@@ -42,9 +48,8 @@ public class Enemy : MonoBehaviour
     {
         if (canMove)
         {
-            ChaseMovement();
-            
-            //SinMovement();
+            //ChaseMovement();          
+            SinMovement();
 
             if (rb2D.velocity.x > 0f && !isFacingRight)
             {
@@ -64,7 +69,7 @@ public class Enemy : MonoBehaviour
 
     private void ChaseMovement()
     {
-        Vector3 direction = player.position - transform.position;
+        Vector3 direction = player.transform.position - transform.position;
 
         if (direction.x < 0f && direction.y < 0f && !isFacingUp)
         {
@@ -90,6 +95,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        healthBar.SetHealth(health);
 
         if (health <= 0)
         {
@@ -124,8 +130,11 @@ public class Enemy : MonoBehaviour
     private void Attack()
     {
         Collider2D player = Physics2D.OverlapCircle(AttackPoint.position, attackRange, playerLayer);
-
-        player.GetComponent<PlayerLife>().TakeDamage(damage);
+        if (player)
+        {
+            player.GetComponent<Player>().AddForce(pushForce);
+            player.GetComponent<PlayerLife>().TakeDamage(damage);
+        }
     }
 
     private void OnDrawGizmos()

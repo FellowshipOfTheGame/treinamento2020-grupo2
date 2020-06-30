@@ -5,15 +5,21 @@ using UnityEngine;
 public class FishMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 2f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] GameObject[] walls;
 
-    // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector3.left * speed * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        foreach (GameObject wall in walls)
+        {
+            if (collision.gameObject == wall)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }

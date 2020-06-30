@@ -11,14 +11,20 @@ public class PlayerLife : MonoBehaviour
 
     private Animator animator;
     private Player player;
-    private HealthBar healthBar;
+    [SerializeField] private HealthBar healthBar;
+    private bool isDead 
+    { 
+        get 
+        { 
+            return life <= 0; 
+        } 
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         player = FindObjectOfType<Player>();
-        healthBar = FindObjectOfType<HealthBar>();
         healthBar.SetMaxHealth(life);
     }
 
@@ -54,7 +60,7 @@ public class PlayerLife : MonoBehaviour
         life -= amount;
         healthBar.SetHealth(life);
 
-        if (life <= 0)
+        if (isDead)
         {
             Death();
         }

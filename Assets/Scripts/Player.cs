@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private Collider2D treasure;
+    [SerializeField] private GameObject treasure;
 
     [Header("Movement")]
     [SerializeField] private float jumpTime = 0.5f;
@@ -110,6 +110,7 @@ public class Player : MonoBehaviour
     private void Movement()
     {
         animator.SetFloat("Speed", Mathf.Abs(rb2D.velocity.x));
+
         if (Input.GetKey(KeyCode.A))
         {
             if (IsGrounded())
@@ -192,12 +193,16 @@ public class Player : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("TRIGGERR!!");
-        if (collision == treasure && canOpenTreasure)
+        if (collision.gameObject == treasure && canOpenTreasure)
         {
-            animator.SetBool("Open", true);
+            treasure.GetComponent<Animator>().SetTrigger("Open");
             Debug.Log("YOU WON!!");
             Debug.LogWarning("DAR LOAD NA CENA DE VITORIA");
-        }    
+        }
+    }
+
+    public void AddForce(Vector2 force)
+    {
+        rb2D.AddForce(force);
     }
 }

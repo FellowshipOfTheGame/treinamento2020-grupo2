@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TreasureOpenning
+  m_Name: OctopusIdle
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,22 +20,12 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: e7403e37b86e3574483415d2ebd73919, type: 3}
-    - time: 0.11111111
-      value: {fileID: 21300000, guid: 8384ff1410f181345b1cd9c0d0f32c37, type: 3}
-    - time: 0.22222222
-      value: {fileID: 21300000, guid: f5f3ec547f91d314a8eb7f57244c418d, type: 3}
-    - time: 0.33333334
-      value: {fileID: 21300000, guid: e4afc7ac1f7192b45a30b2d9d5ecb918, type: 3}
-    - time: 0.44444445
-      value: {fileID: 21300000, guid: 613d182667ae78e4e979633ea8524d6b, type: 3}
-    - time: 0.5555556
-      value: {fileID: 21300000, guid: 19862c5c87cc0714581a2a6d88dd28e9, type: 3}
+      value: {fileID: 21300000, guid: 3a25e6c043d50d54ba4164d95c7e54f4, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 9
+  m_SampleRate: 1
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -50,18 +40,13 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: e7403e37b86e3574483415d2ebd73919, type: 3}
-    - {fileID: 21300000, guid: 8384ff1410f181345b1cd9c0d0f32c37, type: 3}
-    - {fileID: 21300000, guid: f5f3ec547f91d314a8eb7f57244c418d, type: 3}
-    - {fileID: 21300000, guid: e4afc7ac1f7192b45a30b2d9d5ecb918, type: 3}
-    - {fileID: 21300000, guid: 613d182667ae78e4e979633ea8524d6b, type: 3}
-    - {fileID: 21300000, guid: 19862c5c87cc0714581a2a6d88dd28e9, type: 3}
+    - {fileID: 21300000, guid: 3a25e6c043d50d54ba4164d95c7e54f4, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.6666667
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
