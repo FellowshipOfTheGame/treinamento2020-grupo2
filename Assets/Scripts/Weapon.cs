@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] Transform firePoint = default;
-    [SerializeField] GameObject harpoonPrefab = null;
-    [SerializeField] float shootTime = 1f;
+    [SerializeField] private Transform firePoint = default;
+    [SerializeField] private GameObject harpoonPrefab = null;
+    [SerializeField] private float shootTime = 5f;
+
+    private float nextRangedAttackTime = 0f;
 
     private Animator animator;
-    private bool canShoot = true;
 
     private void Start()
     {
@@ -20,7 +21,11 @@ public class Weapon : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
-            Shoot();
+            if (Time.time >= nextRangedAttackTime)
+            {
+                Shoot();
+                nextRangedAttackTime = Time.time + 1f / shootTime;
+            }
         }
         if (Input.GetKeyUp(KeyCode.J))
         {
@@ -30,15 +35,7 @@ public class Weapon : MonoBehaviour
 
     private void Shoot()
     {
-        if (shootTime > 0 && canShoot)
-        {
-            animator.SetBool("RangedAttack", true);
-            Instantiate(harpoonPrefab, firePoint.position, firePoint.rotation);
-            shootTime -= Time.deltaTime;
-        }
-        else
-        {
-            canShoot = false;
-        }
+        animator.SetBool("RangedAttack", true);
+        Instantiate(harpoonPrefab, firePoint.position, firePoint.rotation);
     }
 }

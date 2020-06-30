@@ -12,7 +12,8 @@ public class Harpoon : MonoBehaviour
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        rb2D.velocity = new Vector2(speed, rb2D.velocity.y);
+        //rb2D.velocity = new Vector2(speed, rb2D.velocity.y);
+        rb2D.velocity = transform.right * speed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -24,6 +25,7 @@ public class Harpoon : MonoBehaviour
         if (enemy)
         {
             enemy.TakeDamage(damage);
+            Destroy(gameObject);
         }
         Destroy(gameObject, 2f);
     }
