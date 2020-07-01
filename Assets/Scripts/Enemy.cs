@@ -129,12 +129,9 @@ public class Enemy : MonoBehaviour
 
     private void Attack()
     {
-        Collider2D player = Physics2D.OverlapCircle(AttackPoint.position, attackRange, playerLayer);
-        if (player)
-        {
-            player.GetComponent<Player>().AddForce(pushForce);
-            player.GetComponent<PlayerLife>().TakeDamage(damage);
-        }
+        //Collider2D player = Physics2D.OverlapCircle(AttackPoint.position, attackRange, playerLayer);
+        player.GetComponent<Player>().AddForce(pushForce);
+        player.GetComponent<PlayerLife>().TakeDamage(damage);
     }
 
     private void OnDrawGizmos()
@@ -172,5 +169,10 @@ public class Enemy : MonoBehaviour
         {
             playerInRange = false;
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject == player)
+            Attack();
     }
 }

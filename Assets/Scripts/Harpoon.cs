@@ -6,13 +6,20 @@ public class Harpoon : MonoBehaviour
 {
     [SerializeField] float speed = 20f;
     [SerializeField] int damage = 10;
+    [SerializeField] GameObject[] sharks;
+    private GameObject[] octopuses;
+    [SerializeField] GameObject[] jellyfishes;
 
     private Rigidbody2D rb2D;
+    private Enemy enemyScript;
+    private Octopus octopusScript;
+    private Jellyfish jellyfishScript;
 
     void Start()
     {
+        octopuses = FindObjectsOfType<GameObject>();
+        //octopuses[1].GetComponents<>
         rb2D = GetComponent<Rigidbody2D>();
-        //rb2D.velocity = new Vector2(speed, rb2D.velocity.y);
         rb2D.velocity = transform.right * speed;
     }
 
@@ -20,12 +27,33 @@ public class Harpoon : MonoBehaviour
     {
         Debug.Log(collision.name);
 
-        Enemy enemy = collision.GetComponent<Enemy>();
-
-        if (enemy)
+        foreach (GameObject shark in sharks)
         {
-            enemy.TakeDamage(damage);
-            Destroy(gameObject);
+            if (collision.gameObject == shark)
+            {
+                enemyScript = shark.GetComponent<Enemy>();
+                enemyScript.TakeDamage(damage);
+                Destroy(gameObject);
+            }
+        }
+        foreach (GameObject octopus in octopuses)
+        {
+            if (collision.gameObject == octopus)
+            {
+                Debug.Log("HERE");
+                octopusScript = octopus.GetComponent<Octopus>();
+                octopusScript.TakeDamage(damage);
+                Destroy(gameObject);
+            }
+        }
+        foreach (GameObject jellyfish in jellyfishes)
+        {
+            if (collision.gameObject == jellyfish)
+            {
+                jellyfishScript = jellyfish.GetComponent<Jellyfish>();
+                jellyfishScript.TakeDamage(damage);
+                Destroy(gameObject);
+            }
         }
         Destroy(gameObject, 2f);
     }

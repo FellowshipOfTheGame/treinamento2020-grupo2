@@ -25,7 +25,6 @@ public class Octopus : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("DISTANCIA DO POLVO = " + Vector2.Distance(player.transform.position, transform.position));
         if (Vector2.Distance(player.transform.position, transform.position) < 10f)
         {
             animator.SetTrigger("IsInRange");

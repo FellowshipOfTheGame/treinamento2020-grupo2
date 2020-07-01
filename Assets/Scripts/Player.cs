@@ -6,6 +6,7 @@ using System.Timers;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -80,8 +81,11 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
+        animator.SetFloat("Yspeed", rb2D.velocity.y);
+
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
         {
+            animator.SetBool("IsJumping", true);
             rb2D.velocity = new Vector2(rb2D.velocity.x, jumpVelocity);
             jumpTimeCounter = jumpTime;
             isJumping = true;
@@ -100,10 +104,16 @@ public class Player : MonoBehaviour
                 isJumping = false;
             }
         }
+
         //When the player releases the Space bar, then stop the jump
         if (Input.GetKeyUp(KeyCode.Space))
         {
             isJumping = false;
+        }
+
+        if (Mathf.Abs(rb2D.velocity.y) < float.Epsilon)
+        {
+            animator.SetBool("IsJumping", false);
         }
     }
 
@@ -197,12 +207,22 @@ public class Player : MonoBehaviour
         {
             treasure.GetComponent<Animator>().SetTrigger("Open");
             Debug.Log("YOU WON!!");
-            Debug.LogWarning("DAR LOAD NA CENA DE VITORIA");
+            StartCoroutine(LoadWinScene());
         }
+    }
+    IEnumerator LoadWinScene()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("Win Scene");
     }
 
     public void AddForce(Vector2 force)
     {
         rb2D.AddForce(force);
+    }
+
+    public bool GetCanMove()
+    {
+        return canMove;
     }
 }

@@ -226,7 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f561cfe0dca52c5469efcc3ce2d7199d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treasure: {fileID: 0}
+  treasure: {fileID: 2594236976166579698, guid: b24d48c0a0b1e2147a2e58a1fd4fbcf5,
+    type: 3}
   jumpTime: 0.5
   moveSpeed: 5
   midAirControl: 0.9
@@ -315,7 +316,7 @@ MonoBehaviour:
   firePoint: {fileID: 1776254636}
   harpoonPrefab: {fileID: 3303586156032897317, guid: 91742c5ac11f8004fb7d30645e7f2722,
     type: 3}
-  shootTime: 1
+  shootTime: 4
 --- !u!1 &8210375369344384200
 GameObject:
   m_ObjectHideFlags: 0

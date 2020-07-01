@@ -26,6 +26,7 @@ public class PlayerLife : MonoBehaviour
         animator = GetComponent<Animator>();
         player = FindObjectOfType<Player>();
         healthBar.SetMaxHealth(life);
+        animator.SetBool("IsDead", false);
     }
 
     // Update is called once per frame
@@ -40,9 +41,15 @@ public class PlayerLife : MonoBehaviour
     private void Death()
     {
         player.StopMoving();
-        animator.SetTrigger("Death");
+        animator.SetBool("IsDead", true);
         Debug.LogWarning("Implementar cena de game over");
-        //SceneManager.LoadScene("Game Over Scene");
+        StartCoroutine(LoadGameOver());
+    }
+
+    IEnumerator LoadGameOver()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("Game Over Scene");
     }
 
     public int GetPlayerLife()
