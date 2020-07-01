@@ -5,6 +5,7 @@ using UnityEngine;
 public class Loader : MonoBehaviour
 {
     private SceneLoader scene;
+
     // Start is called before the first frame update
     void Start()
     {
