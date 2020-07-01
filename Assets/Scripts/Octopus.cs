@@ -25,7 +25,6 @@ public class Octopus : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("DISTANCIA DO POLVO = " + Vector2.Distance(player.transform.position, transform.position));
         if (Vector2.Distance(player.transform.position, transform.position) < 10f)
         {
             animator.SetTrigger("IsInRange");
@@ -40,18 +39,19 @@ public class Octopus : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, ref List<Octopus> list)
     {
         health -= damage;
         healthBar.SetHealth(health);
 
         if (health <= 0)
         {
-            Death();
+            Death(ref list);
         }
     }
-    private void Death()
+    private void Death(ref List<Octopus> list)
     {
+        list.Remove(this);
         Destroy(gameObject);
     }
 }

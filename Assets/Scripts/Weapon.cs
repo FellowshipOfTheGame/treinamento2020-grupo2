@@ -9,33 +9,37 @@ public class Weapon : MonoBehaviour
     [SerializeField] private GameObject harpoonPrefab = null;
     [SerializeField] private float shootTime = 5f;
 
-    private float nextRangedAttackTime = 0f;
+    //private float nextRangedAttackTime = 0f;
+    private float firstFrameTime;
 
     private Animator animator;
+    private Player player;
 
     private void Start()
     {
+        firstFrameTime = Time.time;
         animator = GetComponent<Animator>();
+        player = FindObjectOfType<Player>();
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
+        if (player.GetCanMove())
         {
-            if (Time.time >= nextRangedAttackTime)
+            if (Input.GetKeyDown(KeyCode.J))
             {
-                Shoot();
-                nextRangedAttackTime = Time.time + 1f / shootTime;
+                animator.SetTrigger("RangedAttack");
+                /*
+                if (Time.time - firstFrameTime >= shootTime)
+                {
+                    firstFrameTime = Time.time;
+                    Shoot();
+                }*/
             }
-        }
-        if (Input.GetKeyUp(KeyCode.J))
-        {
-            animator.SetBool("RangedAttack", false);
         }
     }
 
-    private void Shoot()
+    public void Shoot()
     {
-        animator.SetBool("RangedAttack", true);
         Instantiate(harpoonPrefab, firePoint.position, firePoint.rotation);
     }
 }

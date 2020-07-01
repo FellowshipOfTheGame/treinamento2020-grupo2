@@ -92,24 +92,6 @@ public class Enemy : MonoBehaviour
         rb2D.velocity = new Vector2(direction.x * speed, direction.y * speed);
     }
 
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        healthBar.SetHealth(health);
-
-        if (health <= 0)
-        {
-            Death();
-        }
-    }
-
-    private void Death()
-    {
-        canMove = false;
-
-        Destroy(gameObject);
-    }
-
     private void SinMovement()
     {
         if (period <= Mathf.Epsilon)
@@ -129,12 +111,9 @@ public class Enemy : MonoBehaviour
 
     private void Attack()
     {
-        Collider2D player = Physics2D.OverlapCircle(AttackPoint.position, attackRange, playerLayer);
-        if (player)
-        {
-            player.GetComponent<Player>().AddForce(pushForce);
-            player.GetComponent<PlayerLife>().TakeDamage(damage);
-        }
+        //Collider2D player = Physics2D.OverlapCircle(AttackPoint.position, attackRange, playerLayer);
+        player.GetComponent<Player>().AddForce(pushForce);
+        player.GetComponent<PlayerLife>().TakeDamage(damage);
     }
 
     private void OnDrawGizmos()
@@ -172,5 +151,27 @@ public class Enemy : MonoBehaviour
         {
             playerInRange = false;
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject == player)
+            Attack();
+    }
+
+    public void TakeDamage(int damage, ref List<Enemy> list)
+    {
+        health -= damage;
+        healthBar.SetHealth(health);
+
+        if (health <= 0)
+        {
+            Death(ref list);
+        }
+    }
+    private void Death(ref List<Enemy> list)
+    {
+        canMove = false;
+        list.Remove(this);
+        Destroy(gameObject);
     }
 }

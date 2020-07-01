@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     [Header("Ground")]
     [SerializeField] private LayerMask groundLayerMask = default;
 
+    private SceneLoader sceneLoader;
     private Animator animator;
     private BoxCollider2D boxCollider2D;
     private Rigidbody2D rb2D;
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        sceneLoader = FindObjectOfType<SceneLoader>();
         animator = GetComponent<Animator>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
@@ -51,12 +53,13 @@ public class Player : MonoBehaviour
             Movement();
             Jump();
             
+            /*
             if (Time.time >= nextMeleeAttackTime)
                 if (Input.GetKeyDown(KeyCode.H))
                 {
                     MeleeAttack();
                     nextMeleeAttackTime = Time.time + 1f / meleeAttackRate;
-                }
+                }*/
 
             if (rb2D.velocity.x > 0f && !isFacingRight)
             {
@@ -80,8 +83,11 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
+        animator.SetFloat("Yspeed", rb2D.velocity.y);
+
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
         {
+            animator.SetBool("IsJumping", true);
             rb2D.velocity = new Vector2(rb2D.velocity.x, jumpVelocity);
             jumpTimeCounter = jumpTime;
             isJumping = true;
@@ -100,10 +106,16 @@ public class Player : MonoBehaviour
                 isJumping = false;
             }
         }
+
         //When the player releases the Space bar, then stop the jump
         if (Input.GetKeyUp(KeyCode.Space))
         {
             isJumping = false;
+        }
+
+        if (Mathf.Abs(rb2D.velocity.y) < float.Epsilon)
+        {
+            animator.SetBool("IsJumping", false);
         }
     }
 
@@ -159,12 +171,17 @@ public class Player : MonoBehaviour
         animator.SetTrigger("MeleeAttack");
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(meleeAttackPoint.position, attackRange, enemyLayers);
+        List<Collider2D> list = new List<Collider2D>();
+
+
+        for (int i = 0; i < hitEnemies.Length; i++)
+            list.Add(hitEnemies[i]);
 
         foreach(Collider2D enemy in hitEnemies)
         {
             Debug.Log("Melee hit in " + enemy.name);
 
-            enemy.GetComponent<Enemy>().TakeDamage(meleeAttackDamage);
+            //enemy.GetComponent<Enemy>().TakeDamage(meleeAttackDamage, ref list);
         }
     }
 
@@ -197,12 +214,22 @@ public class Player : MonoBehaviour
         {
             treasure.GetComponent<Animator>().SetTrigger("Open");
             Debug.Log("YOU WON!!");
-            Debug.LogWarning("DAR LOAD NA CENA DE VITORIA");
+            StartCoroutine(LoadWinScene());
         }
+    }
+    IEnumerator LoadWinScene()
+    {
+        yield return new WaitForSeconds(3);
+        sceneLoader.LoadWinScene();
     }
 
     public void AddForce(Vector2 force)
     {
         rb2D.AddForce(force);
+    }
+
+    public bool GetCanMove()
+    {
+        return canMove;
     }
 }
