@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    private GameObject soundManager;
+    private AudioSource soundManager;
 
-    private void Start()
+    private void Awake()
     {
-        soundManager = GameObject.Find("Sound Manager");
+        soundManager = FindObjectOfType<AudioSource>();
     }
 
     public void LoadMenu()
