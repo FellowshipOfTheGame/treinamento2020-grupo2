@@ -100,9 +100,7 @@ MonoBehaviour:
   damage: 10
   sharks:
   - {fileID: 84126057695319610, guid: b4f60998db73b584ca6c18d4cf8432da, type: 3}
-  octopuses:
-  - {fileID: 1299455988444372880, guid: bd17360499fa3b74d8c29eebe9643503, type: 3}
-  - {fileID: 1299455988444372880, guid: bd17360499fa3b74d8c29eebe9643503, type: 3}
+  octopusesQuantity: 2
   jellyfishes:
   - {fileID: 4477725717472826042, guid: 314bf932a51339346b9ed1ac8e9750be, type: 3}
 --- !u!50 &-5030743750254397423

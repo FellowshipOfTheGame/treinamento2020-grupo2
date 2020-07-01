@@ -3,15 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
     [SerializeField] int life = 100;
+    [SerializeField] private HealthBar healthBar;
 
     private Animator animator;
     private Player player;
-    [SerializeField] private HealthBar healthBar;
+    private SceneLoader sceneLoader;
+
     private bool isDead 
     { 
         get 
@@ -23,6 +24,7 @@ public class PlayerLife : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sceneLoader = FindObjectOfType<SceneLoader>();
         animator = GetComponent<Animator>();
         player = FindObjectOfType<Player>();
         healthBar.SetMaxHealth(life);
@@ -42,14 +44,13 @@ public class PlayerLife : MonoBehaviour
     {
         player.StopMoving();
         animator.SetBool("IsDead", true);
-        Debug.LogWarning("Implementar cena de game over");
         StartCoroutine(LoadGameOver());
     }
 
     IEnumerator LoadGameOver()
     {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("Game Over Scene");
+        sceneLoader.LoadGameOverScene();
     }
 
     public int GetPlayerLife()

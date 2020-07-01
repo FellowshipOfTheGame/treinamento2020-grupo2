@@ -92,24 +92,6 @@ public class Enemy : MonoBehaviour
         rb2D.velocity = new Vector2(direction.x * speed, direction.y * speed);
     }
 
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        healthBar.SetHealth(health);
-
-        if (health <= 0)
-        {
-            Death();
-        }
-    }
-
-    private void Death()
-    {
-        canMove = false;
-
-        Destroy(gameObject);
-    }
-
     private void SinMovement()
     {
         if (period <= Mathf.Epsilon)
@@ -174,5 +156,22 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject == player)
             Attack();
+    }
+
+    public void TakeDamage(int damage, ref List<Enemy> list)
+    {
+        health -= damage;
+        healthBar.SetHealth(health);
+
+        if (health <= 0)
+        {
+            Death(ref list);
+        }
+    }
+    private void Death(ref List<Enemy> list)
+    {
+        canMove = false;
+        list.Remove(this);
+        Destroy(gameObject);
     }
 }
