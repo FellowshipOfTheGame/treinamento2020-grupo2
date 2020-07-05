@@ -13,7 +13,7 @@ public class PlayerLife : MonoBehaviour
     private Player player;
     private SceneLoader sceneLoader;
 
-    private bool isDead 
+    public bool isDead 
     { 
         get 
         { 

@@ -101,7 +101,7 @@ MonoBehaviour:
     m_Bits: 1024
   attackRange: 1
   speed: 20
-  damage: 10
+  damage: 20
 --- !u!50 &-5030743750254397423
 Rigidbody2D:
   serializedVersion: 4

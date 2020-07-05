@@ -231,7 +231,7 @@ MonoBehaviour:
   moveSpeed: 5
   midAirControl: 0.9
   jumpVelocity: 3
-  meleeAttackDamage: 10
+  meleeAttackDamage: 40
   meleeAttackRate: 1
   attackRange: 3
   meleeAttackPoint: {fileID: 1605869810954353466}

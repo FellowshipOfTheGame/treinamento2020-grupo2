@@ -23,11 +23,12 @@ public class UIManager : MonoBehaviour
                 PauseGame();
             }
         }
-        if (playerLife.IsDead)
-        {
-            //PauseGame();
-            GameOverMenu();
-        }
+        if (playerLife)
+            if (playerLife.isDead)
+            {
+                //PauseGame();
+                GameOverMenu();
+            }
     }
 
     private void Start()

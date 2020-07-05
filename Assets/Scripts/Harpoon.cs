@@ -9,7 +9,7 @@ public class Harpoon : MonoBehaviour
     [SerializeField] private LayerMask enemyLayers;
     [SerializeField] private float attackRange = 1f;
     [SerializeField] private float speed = 20f;
-    [SerializeField] private int damage = 10;
+    [SerializeField] private int damage = 20;
 
     private PolygonCollider2D polygonCollider2D;
     private Rigidbody2D rb2D;
