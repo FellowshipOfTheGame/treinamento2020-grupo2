@@ -226,14 +226,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f561cfe0dca52c5469efcc3ce2d7199d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treasure: {fileID: 2594236976166579698, guid: b24d48c0a0b1e2147a2e58a1fd4fbcf5,
-    type: 3}
+  treasure: {fileID: 0}
   jumpTime: 0.5
   moveSpeed: 5
   midAirControl: 0.9
   jumpVelocity: 3
   meleeAttackDamage: 10
-  meleeAttackRate: 2
+  meleeAttackRate: 1
   attackRange: 3
   meleeAttackPoint: {fileID: 1605869810954353466}
   enemyLayers:

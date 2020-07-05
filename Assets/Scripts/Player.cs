@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     [Header("MeleeAttack")]
     [SerializeField] private int meleeAttackDamage = 10;
-    [SerializeField] private float meleeAttackRate = 2f;
+    [SerializeField] private float meleeAttackRate = 1f;
     [SerializeField] private float attackRange = 1f;
     [SerializeField] private Transform meleeAttackPoint = null;
     [SerializeField] private LayerMask enemyLayers;
@@ -31,8 +31,8 @@ public class Player : MonoBehaviour
     private Animator animator;
     private BoxCollider2D boxCollider2D;
     private Rigidbody2D rb2D;
-    private float nextMeleeAttackTime = 0f;
     private float jumpTimeCounter;
+    private float firstFrameTime;
     private bool isJumping;
     private bool isFacingRight = true;
     private bool canMove = true;
@@ -46,6 +46,11 @@ public class Player : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
     }
 
+    private void Start()
+    {
+        firstFrameTime = Time.time;
+    }
+
     private void Update()
     {
         if (canMove)
@@ -53,13 +58,12 @@ public class Player : MonoBehaviour
             Movement();
             Jump();
             
-            /*
-            if (Time.time >= nextMeleeAttackTime)
-                if (Input.GetKeyDown(KeyCode.H))
+            if (Input.GetKeyDown(KeyCode.H))
+                if (Time.time - firstFrameTime >= meleeAttackRate)
                 {
+                    firstFrameTime = Time.time;
                     MeleeAttack();
-                    nextMeleeAttackTime = Time.time + 1f / meleeAttackRate;
-                }*/
+                }
 
             if (rb2D.velocity.x > 0f && !isFacingRight)
             {
@@ -171,17 +175,12 @@ public class Player : MonoBehaviour
         animator.SetTrigger("MeleeAttack");
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(meleeAttackPoint.position, attackRange, enemyLayers);
-        List<Collider2D> list = new List<Collider2D>();
-
-
-        for (int i = 0; i < hitEnemies.Length; i++)
-            list.Add(hitEnemies[i]);
 
         foreach(Collider2D enemy in hitEnemies)
         {
             Debug.Log("Melee hit in " + enemy.name);
 
-            //enemy.GetComponent<Enemy>().TakeDamage(meleeAttackDamage, ref list);
+            enemy.GetComponent<Enemy>().TakeDamage(meleeAttackDamage);
         }
     }
 

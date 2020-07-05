@@ -2,25 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FishMovement : MonoBehaviour
+public class Shark : MonoBehaviour
 {
-    [SerializeField] private float speed = 2f;
-    [SerializeField] GameObject[] walls;
+    [Header("Damage")]
+    [SerializeField] int damage = 30;
 
     [Header("SinMovement")]
     [SerializeField] private Vector3 movementVector = new Vector3(-20f, 0f, 0f);
     [SerializeField] float period = 6f;
 
+    [Header("Player")]
+    [SerializeField] GameObject player;
+
     private Rigidbody2D rb2D;
+    private PlayerLife playerLife;
     private float movementFactor;
     private bool isFacingRight = true;
 
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
-        rb2D = GetComponent<Rigidbody2D>();   
+        playerLife = FindObjectOfType<PlayerLife>();
+        rb2D = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
         SinMovement();
 
@@ -51,21 +58,18 @@ public class FishMovement : MonoBehaviour
         rb2D.velocity = offset;
     }
 
-    /*
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        foreach (GameObject wall in walls)
-        {
-            if (collision.gameObject == wall)
-            {
-                Destroy(gameObject);
-            }
-        }
-    }*/
     private void FlipHorizontal()
     {
         isFacingRight = !isFacingRight;
 
         transform.Rotate(0f, 180f, 0f);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject == player)
+        {
+            playerLife.TakeDamage(damage);
+        }
     }
 }

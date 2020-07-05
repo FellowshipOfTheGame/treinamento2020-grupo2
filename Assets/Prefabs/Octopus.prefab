@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1299455988350865561}
   - component: {fileID: 1299455988350865563}
   - component: {fileID: 1299455988350865562}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,11 +86,12 @@ GameObject:
   - component: {fileID: 1299455988444372881}
   - component: {fileID: 1299455988444372886}
   - component: {fileID: 1299455988444372885}
+  - component: {fileID: 4684861848013182964}
   - component: {fileID: 1299455988444372884}
   - component: {fileID: 1299455988444372883}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Octopus
-  m_TagString: Untagged
+  m_TagString: Octopus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,10 +192,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6b0391d5a9118448a922ecf3ff3c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 30
+  player: {fileID: 0}
+--- !u!114 &4684861848013182964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299455988444372880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a7c78a3f55b44347bab14ceef365aea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   health: 100
   healthBar: {fileID: 1299455989309045613}
-  damage: 30
-  player: {fileID: 2276414208618366593, guid: 9b896d2dc091f9f4c826fb0d051e7019, type: 3}
 --- !u!61 &1299455988444372884
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -253,7 +266,7 @@ GameObject:
   - component: {fileID: 1299455988674048770}
   - component: {fileID: 1299455988674048772}
   - component: {fileID: 1299455988674048771}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +341,7 @@ GameObject:
   - component: {fileID: 1299455988800199756}
   - component: {fileID: 1299455988800199755}
   - component: {fileID: 1299455988800199754}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +439,7 @@ GameObject:
   - component: {fileID: 1299455989309045612}
   - component: {fileID: 1299455989309045614}
   - component: {fileID: 1299455989309045613}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

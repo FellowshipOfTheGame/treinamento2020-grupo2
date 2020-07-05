@@ -6,53 +6,17 @@ using UnityEngine;
 
 public class Harpoon : MonoBehaviour
 {
+    [SerializeField] private LayerMask enemyLayers;
+    [SerializeField] private float attackRange = 1f;
     [SerializeField] private float speed = 20f;
     [SerializeField] private int damage = 10;
 
-    private List<GameObject> sharks;
-    private List<GameObject> jellyfishes;
-    private List<GameObject> octopuses;
+    private PolygonCollider2D polygonCollider2D;
     private Rigidbody2D rb2D;
-    private List<Enemy> enemiesScripts;
-    private List<Octopus> octopusesScripts;
-    private List<Jellyfish> jellyfishesScripts;
-
-    private void Awake()
-    {
-        octopuses = new List<GameObject>();
-        octopusesScripts = new List<Octopus>();
-
-        sharks = new List<GameObject>();
-        enemiesScripts = new List<Enemy>();
-
-        jellyfishes = new List<GameObject>();
-        jellyfishesScripts = new List<Jellyfish>();
-    }
 
     void Start()
     {
-        var arrayOctopus = GameObject.FindGameObjectsWithTag("Octopus");
-        var arraySharks = GameObject.FindGameObjectsWithTag("Shark");
-        var arrayJellyfishes = GameObject.FindGameObjectsWithTag("Jellyfish");
-
-        for (int i = 0; i < arrayOctopus.Length; i++)
-        {
-            octopuses.Add(arrayOctopus[i]);
-            octopusesScripts.Add(octopuses[i].GetComponent<Octopus>());
-        }
-
-        for (int i = 0; i < arraySharks.Length; i++)
-        {
-            sharks.Add(arraySharks[i]);
-            enemiesScripts.Add(sharks[i].GetComponent<Enemy>());
-        }
-
-        for (int i = 0; i < arrayJellyfishes.Length; i++)
-        {
-            jellyfishes.Add(arrayJellyfishes[i]);
-            jellyfishesScripts.Add(jellyfishes[i].GetComponent<Jellyfish>());
-        }
-
+        polygonCollider2D = GetComponent<PolygonCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
         rb2D.velocity = transform.right * speed;
     }
@@ -61,30 +25,15 @@ public class Harpoon : MonoBehaviour
     {
         Debug.Log(collision.name);
 
-        foreach (GameObject shark in sharks)
+        RaycastHit2D[] raycastHit2D = Physics2D.BoxCastAll(polygonCollider2D.bounds.center, polygonCollider2D.bounds.size, 0f, Vector2.down, 0.1f, enemyLayers);
+
+        foreach (RaycastHit2D enemy in raycastHit2D)
         {
-            if (collision.gameObject == shark)
-            {
-                enemiesScripts[sharks.IndexOf(shark)].TakeDamage(damage, ref enemiesScripts);
-                Destroy(gameObject);
-            }
+            Debug.Log("Ranged hit in " + enemy.collider.name);
+
+            enemy.collider.GetComponent<Enemy>().TakeDamage(damage);
         }
-        foreach (GameObject octopus in octopuses)
-        {
-            if (collision.gameObject == octopus)
-            {
-                octopusesScripts[octopuses.IndexOf(octopus)].TakeDamage(damage, ref octopusesScripts);
-                Destroy(gameObject);
-            }
-        }
-        foreach (GameObject jellyfish in jellyfishes)
-        {
-            if (collision.gameObject == jellyfish)
-            {
-                jellyfishesScripts[jellyfishes.IndexOf(jellyfish)].TakeDamage(damage, ref jellyfishesScripts);
-                Destroy(gameObject);
-            }
-        }
+
         Destroy(gameObject, 2f);
     }
 }
