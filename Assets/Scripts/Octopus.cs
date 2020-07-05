@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Octopus : MonoBehaviour
 {
-    [Header("Life")]
-    [SerializeField] int health = 100;
-    [SerializeField] private HealthBar healthBar;
-
     [Header("Damage")]
     [SerializeField] int damage = 30;
 
@@ -37,21 +33,5 @@ public class Octopus : MonoBehaviour
         {
             playerLife.TakeDamage(damage);
         }
-    }
-
-    public void TakeDamage(int damage, ref List<Octopus> list)
-    {
-        health -= damage;
-        healthBar.SetHealth(health);
-
-        if (health <= 0)
-        {
-            Death(ref list);
-        }
-    }
-    private void Death(ref List<Octopus> list)
-    {
-        list.Remove(this);
-        Destroy(gameObject);
     }
 }

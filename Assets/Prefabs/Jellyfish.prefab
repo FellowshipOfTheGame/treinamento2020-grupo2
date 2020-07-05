@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4477725716660869580}
   - component: {fileID: 4477725716660869583}
   - component: {fileID: 4477725716660869582}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 4477725717044199098}
   - component: {fileID: 4477725717044199096}
   - component: {fileID: 4477725717044199099}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 4477725717084077899}
   - component: {fileID: 4477725717084077897}
   - component: {fileID: 4477725717084077896}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 4477725717326618759}
   - component: {fileID: 4477725717326618757}
   - component: {fileID: 4477725717326618756}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,11 +360,12 @@ GameObject:
   - component: {fileID: 4477725717472826040}
   - component: {fileID: 4477725717472826043}
   - component: {fileID: 4477725717472826046}
+  - component: {fileID: 4670518025391621613}
   - component: {fileID: 5317034221810731812}
   - component: {fileID: 2230607531306688254}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Jellyfish
-  m_TagString: Untagged
+  m_TagString: Jellyfish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -465,10 +466,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4b7e83c3a8fc24dab25657f7dd5966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 30
+  player: {fileID: 0}
+--- !u!114 &4670518025391621613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4477725717472826042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a7c78a3f55b44347bab14ceef365aea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   health: 100
   healthBar: {fileID: 4477725717084077896}
-  damage: 30
-  player: {fileID: 2276414208618366593, guid: 9b896d2dc091f9f4c826fb0d051e7019, type: 3}
 --- !u!61 &5317034221810731812
 BoxCollider2D:
   m_ObjectHideFlags: 0
