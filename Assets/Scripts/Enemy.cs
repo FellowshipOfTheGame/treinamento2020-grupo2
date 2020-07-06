@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     [Header("Life")]
-    [SerializeField] int health = 100;
+    [SerializeField] private int health = 100;
     [SerializeField] private HealthBar healthBar;
 
     public void TakeDamage(int damage)

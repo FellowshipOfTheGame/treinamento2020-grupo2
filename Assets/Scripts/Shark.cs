@@ -1,18 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Shark : MonoBehaviour
 {
     [Header("Damage")]
-    [SerializeField] int damage = 30;
+    [SerializeField] private int damage = 30;
 
     [Header("SinMovement")]
     [SerializeField] private Vector3 movementVector = new Vector3(-20f, 0f, 0f);
-    [SerializeField] float period = 6f;
+    [SerializeField] private float period = 6f;
 
     [Header("Player")]
-    [SerializeField] GameObject player;
+    [SerializeField] private GameObject player;
 
     private Rigidbody2D rb2D;
     private PlayerLife playerLife;

@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Jellyfish : MonoBehaviour
 {
     [Header("Damage")]
-    [SerializeField] int damage = 50;
+    [SerializeField] private int damage = 50;
 
     [Header("Player")]
     [SerializeField] GameObject player;

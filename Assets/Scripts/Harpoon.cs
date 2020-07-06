@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Harpoon : MonoBehaviour
 {
@@ -32,6 +28,7 @@ public class Harpoon : MonoBehaviour
             Debug.Log("Ranged hit in " + enemy.collider.name);
 
             enemy.collider.GetComponent<Enemy>().TakeDamage(damage);
+            Destroy(gameObject);
         }
 
         Destroy(gameObject, 2f);

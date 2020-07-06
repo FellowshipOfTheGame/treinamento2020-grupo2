@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using System.Collections;
 using UnityEngine;
 
 public class PlayerLife : MonoBehaviour
 {
-    [SerializeField] int life = 100;
+    [SerializeField] private int life = 100;
     [SerializeField] private HealthBar healthBar;
 
     private Animator animator;
@@ -21,8 +18,7 @@ public class PlayerLife : MonoBehaviour
         } 
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         sceneLoader = FindObjectOfType<SceneLoader>();
         animator = GetComponent<Animator>();
@@ -31,8 +27,7 @@ public class PlayerLife : MonoBehaviour
         animator.SetBool("IsDead", false);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
         {

@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Octopus : MonoBehaviour
 {
     [Header("Damage")]
-    [SerializeField] int damage = 30;
+    [SerializeField] private int damage = 30;
 
     [Header("Player")]
-    [SerializeField] GameObject player;
+    [SerializeField] private GameObject player;
 
     private Animator animator;
     private PlayerLife playerLife;
