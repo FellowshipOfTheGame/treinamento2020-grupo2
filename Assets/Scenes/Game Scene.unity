@@ -5871,11 +5871,6 @@ PrefabInstance:
       propertyPath: characterTransform
       value: 
       objectReference: {fileID: 1906054631}
-    - target: {fileID: 8898034128140291065, guid: 90d661c6fd2940c4484977db0073acad,
-        type: 3}
-      propertyPath: offset.y
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 8898034128140291067, guid: 90d661c6fd2940c4484977db0073acad,
         type: 3}
       propertyPath: m_Name
