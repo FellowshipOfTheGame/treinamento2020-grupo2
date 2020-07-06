@@ -5,8 +5,9 @@ public class UIManager : MonoBehaviour
 {
 	public static bool GameIsPaused = false;
 	public GameObject pauseMenuUI;
-    public GameObject gameOverMenuUI;
     [SerializeField] private PlayerLife playerLife;
+    [SerializeField] private GameObject credits;
+    [SerializeField] private GameObject menuCanvas;
 
     void Update()
     {
@@ -21,12 +22,6 @@ public class UIManager : MonoBehaviour
                 PauseGame();
             }
         }
-        if (playerLife)
-            if (playerLife.isDead)
-            {
-                //PauseGame();
-                GameOverMenu();
-            }
     }
 
     private void Start()
@@ -48,9 +43,16 @@ public class UIManager : MonoBehaviour
         GameIsPaused = true;
     }
 
-    private void GameOverMenu()
+    public void Credits()
     {
-        gameOverMenuUI.SetActive(true);
+        credits.SetActive(true);
+        menuCanvas.SetActive(false);
+    }
+
+    public void CloseCredits()
+    {
+        credits.SetActive(false);
+        menuCanvas.SetActive(true);
     }
 
     public void LoadScene(string sceneName)
